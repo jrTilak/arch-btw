@@ -41,11 +41,13 @@ The repository currently contains dependency setup only. Preferences, login
 loading, app mockups, and theme helpers were removed. Do not recreate them unless
 requested. Retain the agreed dependency manifest for future work.
 
-- `setup/`: Lua installer, step functions, shared helpers, and `dependencies.lua`.
+- `setup/`: Bootstrap and dependency manifest. `install/` holds ordered Lua
+  setup steps; `helpers/` holds shared command utilities.
+- `MEMORY.md`: Deferred package groups and current implementation scope.
 - `.agents/skills/`: Project-local assistant skills.
 
 Use Lua for setup logic. `setup/setup.sh` is the small bootstrap launcher
-that installs LuaJIT if missing and runs `setup/install-required-deps.lua`.
+that installs LuaJIT if missing and runs `setup/install/all.lua`.
 Maintain required setup and runtime dependencies in `setup/dependencies.lua`,
 grouped by installation source. Dependency installation and configuration
 migration are separate steps; do not restore a root `install.sh` entry point.

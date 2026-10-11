@@ -1,7 +1,19 @@
 -- Required dependencies grouped by the source used to install them.
 -- Keep setup-only tools and runtime requirements together, with their purpose
 -- documented here. This retains the agreed package selection for future work.
+-- category selects a focused setup group; omitted categories are all-only.
+-- source chooses pacman or the AUR helper. Package names must be unique.
 return {
+    {
+        category = "hyprland",
+        source = "pacman",
+        packages = {
+            -- Compositor and its first integration tools; no service/config changes.
+            "hyprland",
+            "xdg-desktop-portal-hyprland",
+            "wl-clipboard",
+        },
+    },
     {
         source = "pacman",
         packages = {
@@ -21,7 +33,6 @@ return {
             "coreutils",
             "ripgrep",
             "glib2",
-            "hyprland",
             "xdg-desktop-portal",
             "xdg-desktop-portal-gtk",
 
@@ -30,6 +41,9 @@ return {
 
             -- Selected desktop terminal.
             "kitty",
+
+            -- Additional browser; installed with all, not the Hyprland-only scope.
+            "chromium",
         },
     },
     {
