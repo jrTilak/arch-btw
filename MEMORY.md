@@ -9,6 +9,8 @@ Dependencies remain defined in `setup/dependencies.lua`.
 `./setup/setup.sh` installs all packages in the current manifest by default,
 skipping installed dependencies. The optional `hyprland` scope selects only
 `hyprland`, `xdg-desktop-portal-hyprland`, and `wl-clipboard`.
+Full setup also deploys the requested minimal Quickshell Polkit agent.
+`./setup/setup.sh polkit` installs only its dependencies and login hook.
 Keep user-facing setup documentation concise and command-focused.
 Do not run installation commands on the user's behalf unless requested; provide
 the terminal command when they want to run setup themselves.

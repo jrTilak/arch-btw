@@ -3,8 +3,8 @@
 local function install()
     -- Install the complete manifest by default; an optional scope selects a group.
     local scope = arg[1] or "all"
-    assert(#arg <= 1 and (scope == "hyprland" or scope == "all"),
-        "Usage: setup.sh [hyprland|all]")
+    assert(#arg <= 1 and (scope == "hyprland" or scope == "polkit" or scope == "all"),
+        "Usage: setup.sh [hyprland|polkit|all]")
 
     -- Resolve symlinks and quoted paths without depending on the checkout name.
     local quoted = "'" .. arg[0]:gsub("'", "'\\''") .. "'"
@@ -33,7 +33,13 @@ local function install()
         aur_steps.aur(packages.aur, helper)
     end
 
-    print("Setup complete. Existing dependencies were preserved; configuration was not migrated.")
+    -- The agent is an explicitly integrated component. Other app configuration
+    -- remains outside setup; the focused scope installs only agent dependencies.
+    if scope == "all" or scope == "polkit" then
+        require("polkit").apply(directory)
+    end
+
+    print("Setup complete. Existing matching dependencies and agent links were preserved.")
 end
 
 -- Fail with a clear message and a nonzero status, stopping later steps.

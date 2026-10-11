@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Use a stable consumer path. Quickshell refuses duplicate instances of this
+# configuration, so manual starts and the login hook can safely overlap.
+exec quickshell --no-duplicate --daemonize \
+    --path "${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/polkit-agent/shell.qml"

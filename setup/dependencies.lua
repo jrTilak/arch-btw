@@ -5,6 +5,15 @@
 -- source chooses pacman or the AUR helper. Package names must be unique.
 return {
     {
+        category = "polkit",
+        source = "pacman",
+        packages = {
+            -- Real session authorization; Quickshell provides the minimal UI.
+            "quickshell",
+            "polkit",
+        },
+    },
+    {
         category = "hyprland",
         source = "pacman",
         packages = {
@@ -35,9 +44,6 @@ return {
             "glib2",
             "xdg-desktop-portal",
             "xdg-desktop-portal-gtk",
-
-            -- Toolkit selected for future desktop apps.
-            "quickshell",
 
             -- Selected desktop terminal.
             "kitty",
