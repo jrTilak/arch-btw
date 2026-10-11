@@ -49,7 +49,9 @@ requested. Retain the agreed dependency manifest for future work.
 Use Lua for setup logic. `setup/setup.sh` is the small bootstrap launcher
 that installs LuaJIT if missing and runs `setup/install/all.lua`.
 Maintain required setup and runtime dependencies in `setup/dependencies.lua`,
-grouped by installation source. Dependency installation and configuration
+grouped by installation source. Setup installs the full manifest by default.
+Keep user-facing documentation concise and command-focused.
+Dependency installation and configuration
 migration are separate steps; do not restore a root `install.sh` entry point.
 Do not assume AUR tooling is already set up: verify sudo access, install missing
 git/base-devel prerequisites, and reuse yay/paru if present. If neither exists,

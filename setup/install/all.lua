@@ -1,9 +1,8 @@
 -- Coordinate setup steps; dependency definitions and step logic stay adjacent.
 -- Run setup.sh on a fresh Arch installation to bootstrap the Lua runtime.
 local function install()
-    -- Default to Hyprland only; all explicitly selects the remaining agreed
-    -- packages. Neither scope migrates configuration or enables services.
-    local scope = arg[1] or "hyprland"
+    -- Install the complete manifest by default; an optional scope selects a group.
+    local scope = arg[1] or "all"
     assert(#arg <= 1 and (scope == "hyprland" or scope == "all"),
         "Usage: setup.sh [hyprland|all]")
 

@@ -6,10 +6,10 @@ Dependencies remain defined in `setup/dependencies.lua`.
 
 ## Current scope
 
-The default `./setup/setup.sh` selects only the Hyprland group: `hyprland`,
-`xdg-desktop-portal-hyprland`, and `wl-clipboard`. It checks installed packages
-and installs missing ones. This does not configure Hyprland or enable services.
-`./setup/setup.sh all` explicitly selects the whole agreed manifest.
+`./setup/setup.sh` installs all packages in the current manifest by default,
+skipping installed dependencies. The optional `hyprland` scope selects only
+`hyprland`, `xdg-desktop-portal-hyprland`, and `wl-clipboard`.
+Keep user-facing setup documentation concise and command-focused.
 Do not run installation commands on the user's behalf unless requested; provide
 the terminal command when they want to run setup themselves.
 

@@ -42,7 +42,7 @@ return {
             -- Selected desktop terminal.
             "kitty",
 
-            -- Additional browser; installed with all, not the Hyprland-only scope.
+            -- Additional browser included in the default full setup.
             "chromium",
         },
     },

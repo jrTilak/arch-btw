@@ -6,7 +6,7 @@ set -euo pipefail
 setup_dir="$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")"
 
 # Validate the scope before even bootstrapping the runtime.
-if (( $# > 1 )) || [[ "${1:-hyprland}" != hyprland && "${1:-hyprland}" != all ]]; then
+if (( $# > 1 )) || [[ "${1:-all}" != hyprland && "${1:-all}" != all ]]; then
     printf 'Usage: %s [hyprland|all]\n' "$0" >&2
     exit 1
 fi
