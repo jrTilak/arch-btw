@@ -87,6 +87,9 @@ under `${XDG_CONFIG_HOME:-$HOME/.config}`, data under
 `${XDG_CACHE_HOME:-$HOME/.cache}`. User commands go in `~/.local/bin`.
 Links into a checkout must be refreshed after moving it; stable consumer paths
 stay the same.
+Luna themes are an explicit exception: use `$HOME/.local/share/luna/themes`
+for the library and `$HOME/.config/luna/theme` for the active theme, ignoring
+XDG directory overrides.
 Leave the separate `~/dotfiles` repository alone unless explicitly requested.
 
 ## Skills to consider later

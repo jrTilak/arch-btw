@@ -2,7 +2,7 @@
 -- Resolve our modules relative to this file; argparse uses LuaJIT's normal
 -- module search path and is installed through the dependency manifest.
 local directory = assert(arg[0]:match("^(.*)/[^/]+$"), "Cannot locate Luna CLI")
-package.path = directory .. "/?.lua;" .. package.path
+package.path = directory .. "/?.lua;" .. directory .. "/?/init.lua;" .. package.path
 
 local argparse = require("argparse")
 local theme = require("theme")
@@ -20,11 +20,13 @@ if arguments.theme then
         return
     end
 
-    -- Scaffold commands fail explicitly until their behavior is implemented;
-    -- they must never report a successful activation or touch configuration.
-    io.stderr:write("luna: theme ", arguments.theme_command,
-        " is not implemented yet.\n")
-    os.exit(1)
+    -- Report operational failures without Lua stack traces or success messages.
+    local ok, message = pcall(theme.run, arguments, directory)
+    if not ok then
+        io.stderr:write("luna: ", tostring(message), "\n")
+        os.exit(1)
+    end
+    return
 end
 
 print(parser:get_help())

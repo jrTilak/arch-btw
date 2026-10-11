@@ -17,6 +17,11 @@ Currently it links only the source packages into `~/.local/src`.
 `./setup/setup.sh stow` installs Stow if missing and runs this deployment step.
 This step does not back up files or run a dry-run; Stow rejects conflicts.
 After moving the checkout, resolve stale source links before rerunning this step.
+The Luna CLI provides `theme list`, `current`, `install PATH [--force]`, and
+`set NAME`. Theme sources, including bundled themes, live in
+`$HOME/.local/share/luna/themes`; the active copy is exposed at
+`$HOME/.config/luna/theme`. Theme paths ignore XDG overrides.
+Apps are not connected to these colors yet.
 Do not run installation commands on the user's behalf unless requested; provide
 the terminal command when they want to run setup themselves.
 

@@ -1,9 +1,23 @@
 # Color themes
 
-Each theme's `theme.json` contains a display name and a shared `base` palette.
+Each theme directory contains a `base.json` with the ten shared color tokens.
 Colors are opaque `#RRGGBB` values; opacity and blur are configured separately.
-These files currently define palettes only; activation and app loading are not
-implemented yet.
+Optional `apps/APP-NAME.json` files contain flat objects of app-specific color
+overrides, also using `#RRGGBB` values. An override may replace a base role or
+provide an extra color token. Token names use letters, digits, and underscores,
+starting with a letter or underscore. App generation will resolve these later.
+
+```text
+tokyo-night/
+  base.json
+  apps/                 # Optional; Tokyo Night currently has no overrides.
+    top-bar.json
+```
+
+Use lowercase letters, digits, hyphens, and underscores for theme identifiers
+and app filenames, starting with a letter or digit. Complete packages are copied
+into the stable user library; [CLI commands](../src/cli/README.md) install and
+activate them. Existing installations require `--force` to replace.
 
 | Base token | Purpose |
 | --- | --- |

@@ -1,0 +1,2 @@
+# Python's test discovery creates bytecode beside the source tests.
+__pycache__/

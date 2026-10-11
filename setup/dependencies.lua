@@ -53,8 +53,8 @@ return {
             "luajit",
             "lua51-argparse",
 
-            -- JSON library retained for planned configuration work.
-            "json-c",
+            -- Pure Lua JSON parsing for the Luna CLI, using LuaJIT-compatible modules.
+            "lua51-dkjson",
 
             -- Shell helpers and GTK/Qt appearance integration.
             "bash",
