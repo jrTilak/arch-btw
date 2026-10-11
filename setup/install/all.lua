@@ -3,8 +3,8 @@
 local function install()
     -- Install the complete manifest by default; an optional scope selects a group.
     local scope = arg[1] or "all"
-    assert(#arg <= 1 and (scope == "hyprland" or scope == "polkit" or scope == "launcher" or scope == "all"),
-        "Usage: setup.sh [hyprland|polkit|launcher|all]")
+    assert(#arg <= 1 and (scope == "hyprland" or scope == "polkit" or scope == "launcher" or scope == "stow" or scope == "all"),
+        "Usage: setup.sh [hyprland|polkit|launcher|stow|all]")
 
     -- Resolve symlinks and quoted paths without depending on the checkout name.
     local quoted = "'" .. arg[0]:gsub("'", "'\\''") .. "'"
@@ -31,6 +31,10 @@ local function install()
     if #packages.aur > 0 then
         local helper = aur_steps.helper()
         aur_steps.aur(packages.aur, helper)
+    end
+
+    if scope == "all" or scope == "stow" then
+        require("stow").apply(directory)
     end
 
     -- The agent is an explicitly integrated component. Other app configuration

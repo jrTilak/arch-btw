@@ -1,7 +1,11 @@
-# Arch BTW
+# Luna
 
 Personal Arch Linux + Hyprland desktop customization project. Develop gradually,
 including custom apps built with Quickshell or other explicitly chosen toolkits.
+
+The desktop customization project is named **Luna**. Use `luna` as the intended
+CLI command name and Luna in user-facing branding. The checkout directory may
+retain its existing name; do not derive command names or resource paths from it.
 
 ## Working rules
 

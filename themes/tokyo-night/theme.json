@@ -1,0 +1,15 @@
+{
+  "name": "Tokyo Night",
+  "base": {
+    "background": "#1a1b26",
+    "surface": "#32344a",
+    "foreground": "#a9b1d6",
+    "muted": "#787c99",
+    "accent": "#7aa2f7",
+    "onAccent": "#1a1b26",
+    "border": "#444b6a",
+    "success": "#9ece6a",
+    "warning": "#e0af68",
+    "error": "#f7768e"
+  }
+}

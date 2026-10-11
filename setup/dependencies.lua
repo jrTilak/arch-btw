@@ -5,6 +5,14 @@
 -- source chooses pacman or the AUR helper. Package names must be unique.
 return {
     {
+        category = "stow",
+        source = "pacman",
+        packages = {
+            -- Deploy checkout packages into their declared consumer paths.
+            "stow",
+        },
+    },
+    {
         category = "desktop-runtime",
         source = "pacman",
         packages = {
@@ -40,8 +48,12 @@ return {
             -- GitHub CLI provides the gh command for repository workflows.
             "github-cli",
 
-            -- Lua runtime and JSON library retained for planned configuration work.
+            -- LuaJIT runs setup and the Luna CLI. Its parser must use the Lua
+            -- 5.1 package; lua-argparse targets a newer, incompatible Lua ABI.
             "luajit",
+            "lua51-argparse",
+
+            -- JSON library retained for planned configuration work.
             "json-c",
 
             -- Shell helpers and GTK/Qt appearance integration.

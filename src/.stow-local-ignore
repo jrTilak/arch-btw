@@ -1,0 +1,3 @@
+# Override Stow's default ignore list so source documentation is linked too.
+# This control file itself is not part of the deployed source packages.
+^/\.stow-local-ignore$
