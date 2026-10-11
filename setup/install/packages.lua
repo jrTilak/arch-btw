@@ -23,7 +23,8 @@ function M.load_manifest(path, scope)
             -- Unselected entries are validated but never installed. Entries
             -- without a category participate only in the all scope.
             if scope == "all" or group.category == scope
-                or (group.category == "desktop-runtime" and (scope == "polkit" or scope == "launcher")) then
+                or (group.category == "desktop-runtime" and (scope == "polkit" or scope == "launcher" or scope == "bar"))
+                or (group.category == "stow" and scope == "bar") then
                 table.insert(packages[group.source], name)
             end
         end

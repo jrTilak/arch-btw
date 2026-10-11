@@ -6,8 +6,8 @@ set -euo pipefail
 setup_dir="$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")"
 
 # Validate the scope before even bootstrapping the runtime.
-if (( $# > 1 )) || [[ "${1:-all}" != hyprland && "${1:-all}" != polkit && "${1:-all}" != launcher && "${1:-all}" != stow && "${1:-all}" != all ]]; then
-    printf 'Usage: %s [hyprland|polkit|launcher|stow|all]\n' "$0" >&2
+if (( $# > 1 )) || [[ "${1:-all}" != hyprland && "${1:-all}" != polkit && "${1:-all}" != launcher && "${1:-all}" != bar && "${1:-all}" != stow && "${1:-all}" != all ]]; then
+    printf 'Usage: %s [hyprland|polkit|launcher|bar|stow|all]\n' "$0" >&2
     exit 1
 fi
 

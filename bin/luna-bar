@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Sources are Stowed into a stable consumer path; the checkout can live anywhere.
+bar_config="$HOME/.local/src/top-bar/shell.qml"
+case "${1:-serve}" in
+    serve)
+        if (( $# > 1 )); then exit 2; fi
+        exec quickshell --no-duplicate --daemonize --path "$bar_config"
+        ;;
+    controls|close)
+        if (( $# > 1 )); then exit 2; fi
+        method=toggleControls
+        [[ "$1" == close ]] && method=closeControls
+        exec quickshell ipc --path "$bar_config" call bar "$method"
+        ;;
+    *)
+        printf 'Usage: luna-bar [serve|controls|close]\n' >&2
+        exit 2
+        ;;
+esac

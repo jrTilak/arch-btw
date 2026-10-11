@@ -50,6 +50,7 @@ removed; do not recreate them unless requested.
 - `MEMORY.md`: Deferred package groups and current implementation scope.
 - `.agents/skills/`: Project-local assistant skills.
 - `src/polkit-agent/`: Native Polkit flow and minimal authentication UI.
+- `src/top-bar/`: Quickshell bar, workspace icons, and native quick settings.
 - `bin/polkit-agent`: Stable session agent command.
 - `config/hypr/`: Agent login module, loaded from the user's XDG config path.
 
@@ -65,6 +66,8 @@ Do not assume AUR tooling is already set up: verify sudo access, install missing
 git/base-devel prerequisites, and reuse yay/paru if present. If neither exists,
 bootstrap yay with makepkg as the regular user, then install all manifest AUR
 packages through yay. Do not add an AUR repository to pacman.conf.
+`setup.sh bar` installs the bar dependencies, Stows sources, and deploys its
+command, editable settings, and Hyprland login module. Full setup includes it.
 
 Use sudo for visible terminal operations and Polkit/pkexec for GUI privileged
 actions. Keep the authentication agent unprivileged; Polkit/PAM own permission

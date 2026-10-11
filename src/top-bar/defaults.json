@@ -1,0 +1,12 @@
+{
+  "workspaceIcons": {
+    "1": "browser",
+    "2": "code",
+    "3": "terminal",
+    "4": "chat",
+    "5": "folder"
+  },
+  "persistentWorkspaces": [1, 2, 3, 4, 5],
+  "fontFamily": "Noto Sans",
+  "clockFormat": "ddd, MMM d   ·   HH:mm"
+}

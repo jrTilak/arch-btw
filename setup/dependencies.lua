@@ -16,8 +16,27 @@ return {
         category = "desktop-runtime",
         source = "pacman",
         packages = {
-            -- Shared runtime for the launcher and session authentication agent.
+            -- Shared runtime for the bar, launcher, and session authentication agent.
             "quickshell",
+        },
+    },
+    {
+        category = "bar",
+        source = "pacman",
+        packages = {
+            -- Native Quickshell service backends; setup does not enable services.
+            "pipewire",
+            "wireplumber",
+            "networkmanager",
+            "bluez",
+            "upower",
+
+            -- Render the bar's bundled SVG icons without a glyph font dependency.
+            "qt6-svg",
+
+            -- Hardware brightness and a PAM-backed screen locker for controls.
+            "brightnessctl",
+            "hyprlock",
         },
     },
     {
