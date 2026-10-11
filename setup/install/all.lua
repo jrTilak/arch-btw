@@ -3,8 +3,8 @@
 local function install()
     -- Install the complete manifest by default; an optional scope selects a group.
     local scope = arg[1] or "all"
-    assert(#arg <= 1 and (scope == "hyprland" or scope == "polkit" or scope == "all"),
-        "Usage: setup.sh [hyprland|polkit|all]")
+    assert(#arg <= 1 and (scope == "hyprland" or scope == "polkit" or scope == "launcher" or scope == "all"),
+        "Usage: setup.sh [hyprland|polkit|launcher|all]")
 
     -- Resolve symlinks and quoted paths without depending on the checkout name.
     local quoted = "'" .. arg[0]:gsub("'", "'\\''") .. "'"
@@ -37,6 +37,10 @@ local function install()
     -- remains outside setup; the focused scope installs only agent dependencies.
     if scope == "all" or scope == "polkit" then
         require("polkit").apply(directory)
+    end
+
+    if scope == "all" or scope == "launcher" then
+        require("launcher").apply(directory)
     end
 
     print("Setup complete. Existing matching dependencies and agent links were preserved.")

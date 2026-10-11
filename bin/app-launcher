@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# A stable XDG path identifies the resident instance even if the checkout moves.
+launcher_config="${XDG_CONFIG_HOME:-$HOME/.config}/quickshell/app-launcher/shell.qml"
+if [[ "${1:-}" == serve ]]; then
+    exec quickshell --no-duplicate --daemonize --path "$launcher_config"
+fi
+if (( $# )); then
+    printf 'Usage: %s [serve]\n' "$0" >&2
+    exit 1
+fi
+
+# Toggle the existing instance. If login has not started it yet, start once and
+# briefly wait for IPC registration; a failed start is reported to the caller.
+if quickshell ipc --path "$launcher_config" call launcher toggle 2>/dev/null; then
+    exit 0
+fi
+quickshell --no-duplicate --daemonize --path "$launcher_config"
+for attempt in {1..20}; do
+    if quickshell ipc --path "$launcher_config" call launcher toggle 2>/dev/null; then
+        exit 0
+    fi
+    sleep 0.05
+done
+printf 'App launcher did not become available. Check Quickshell logs.\n' >&2
+exit 1

@@ -5,11 +5,18 @@
 -- source chooses pacman or the AUR helper. Package names must be unique.
 return {
     {
+        category = "desktop-runtime",
+        source = "pacman",
+        packages = {
+            -- Shared runtime for the launcher and session authentication agent.
+            "quickshell",
+        },
+    },
+    {
         category = "polkit",
         source = "pacman",
         packages = {
             -- Real session authorization; Quickshell provides the minimal UI.
-            "quickshell",
             "polkit",
         },
     },
@@ -50,6 +57,9 @@ return {
 
             -- Additional browser included in the default full setup.
             "chromium",
+
+            -- Zed code editor, installed from Arch's official repositories.
+            "zed",
         },
     },
     {
